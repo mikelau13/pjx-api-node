@@ -37,20 +37,12 @@ routesByMethod.get.forEach(route =>
 );
 
 server.listen(8081, function() {
-  console.log('%s listening at %s', server.name, server.url);
+  console.log('🚀  %s listening at %s', server.name, server.url);
 });
 
 process.on("uncaughtException", (options, error) => { 
   if (error && error.stack) console.log("EXCEPTION:", error.stack); 
   else console.log("EXCEPTION:", options); 
-});
-
-server.on('uncaughtException', function (req, res, route, err) {
-  console.log('uncaughtException'); 
-  console.log(route); 
-  console.log(err.stack); 
-  console.log(err.message);
-  res.send(400, { message: err.message }); 
 });
 
 server.on('InternalServer', function(req, res, err, callback) {
@@ -64,5 +56,9 @@ server.on('restifyError', function(req, res, err, callback) {
   console.log('restifyError'); 
   console.log(err.stack); 
   console.log(err.message);
-  res.send(500, err);
+});
+
+server.on('NotFound', function (req, res, err, callback) {
+  console.log('Not found');
+  res.send(404, err);
 });

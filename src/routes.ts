@@ -1,5 +1,5 @@
-import { plugins, RequestHandler } from 'restify';
-import { getCity } from './handlers/city';
+import { plugins } from 'restify';
+import { getAllCities, getCityById } from './handlers/city';
 
 export interface IRoute {
     path: string;
@@ -16,8 +16,12 @@ const PATH_PREFIX = '/api/:version';
 
 const routesForGet: IRoute[] = [
     {
-      path: '/cities/:slug',
-      handlers: [{ version: CURRENT_API_VERSION, handler: [getCity] }]
+      path: '/city/:cityId',
+      handlers: [{ version: CURRENT_API_VERSION, handler: [getCityById] }]
+    },
+    {
+      path: '/cities',
+      handlers: [{ version: CURRENT_API_VERSION, handler: [getAllCities] }]
     }
   ];
 

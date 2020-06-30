@@ -18,4 +18,6 @@ npm install @types/mocha
 Few URLs to run:
 http://localhost:8081/healthcheck
 http://localhost:8081/crash
-http://localhost:8081/api/1/cities/Toronto
+http://localhost:8081/api/1/cities/
+http://localhost:8081/api/1/city/1
+http://localhost:8081/api/1/city/2

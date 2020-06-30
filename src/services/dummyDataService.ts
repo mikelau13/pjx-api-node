@@ -10,13 +10,17 @@ export default class DummyDataService {
         memoryCache.put(CACHE_KEY_DUMMY_DATA, DummyDataService.getDummyData());
     }
 
+    static getDummyDataAll() {   
+        return DummyDataService.getDummyData();
+    }
+
     static getDummyDataByCity(city: string) {
         const dummyData = DummyDataService.getDummyData() as Array<{
-            city: string;
+            name: string;
         }>;
       
         const result = dummyData.filter(item => {
-            return item.city === city;
+            return item.name === city;
         });
     
         return result;
@@ -24,12 +28,11 @@ export default class DummyDataService {
 
     static getDummyDataById(id: number) {
         const dummyData = DummyDataService.getDummyData() as Array<{
-            id: number,
-            name: string;
+            id: number
         }>;
       
         const result = dummyData.filter(item => {
-            return item.id === id;
+            return item.id == id;
         });
     
         return result;
