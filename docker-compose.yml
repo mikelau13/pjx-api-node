@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  pjx-api:
+    build:
+      context: .
+    container_name: pjx-api-node
+    command: npm start
+    volumes:
+      - .:/usr/api
+    ports:
+      - 8081:8081
