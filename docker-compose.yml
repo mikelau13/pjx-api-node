@@ -1,4 +1,9 @@
-version: '3.4'
+version: '3.8'
+
+networks:
+  pjx-network:
+    name: pjx-network
+    driver: bridge
 
 services:
   pjx-api:
@@ -10,3 +15,5 @@ services:
       - .:/usr/api
     ports:
       - 8081:8081
+    networks:
+      - pjx-network
