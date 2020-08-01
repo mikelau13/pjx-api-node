@@ -6,7 +6,7 @@ networks:
     driver: bridge
 
 services:
-  pjx-api:
+  pjx-api-node:
     build:
       context: .
     container_name: pjx-api-node
