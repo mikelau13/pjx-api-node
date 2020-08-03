@@ -4,7 +4,8 @@ pipeline {
     stage('build') {
       steps {
         echo 'Let\'s Start \\( ^ ^ )/'
-        sh 'pwd'
+        sh '''pwd
+docker build .'''
       }
     }
 
