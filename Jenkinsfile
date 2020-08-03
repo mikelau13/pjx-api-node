@@ -19,7 +19,7 @@ pipeline {
     stage('Cleanup') {
       steps {
         sh 'docker-compose down'
-        sh 'docker system prune -a'
+        sh 'docker system prune --all --force'
         cleanWs(cleanWhenSuccess: true)
       }
     }
