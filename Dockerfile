@@ -1,5 +1,7 @@
 # base image
-FROM node:10-slim
+FROM node:14-slim
+RUN apt-get update
+RUN apt-get install python make -y
 
 WORKDIR /home/node
 
