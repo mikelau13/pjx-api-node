@@ -6,6 +6,7 @@ pipeline {
         echo 'Let\'s Start \\( ^ ^ )/'
         sh '''pwd
 docker build .'''
+        cleanWs(deleteDirs: true)
       }
     }
 
