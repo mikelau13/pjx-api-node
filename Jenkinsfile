@@ -4,7 +4,7 @@ pipeline {
     stage('Build and Deploy') {
       steps {
         echo 'Let\'s Start \\( ^ ^ )/'
-        sh 'docker-compose up --build -d'
+        sh 'docker-compose build'
         cleanWs(cleanWhenSuccess: true)
       }
     }
@@ -12,6 +12,8 @@ pipeline {
     stage('Check server') {
       steps {
         sh 'curl http://localhost:8081/api/1/cities'
+        sh 'docker-compose start pjx-api-node -d '
+        sleep 10
       }
     }
 
