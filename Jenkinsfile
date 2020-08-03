@@ -4,15 +4,14 @@ pipeline {
     stage('Build and Deploy') {
       steps {
         echo 'Let\'s Start \\( ^ ^ )/'
-        pwd()
-        sh 'docker-compose up --build'
+        sh 'docker-compose up --build &'
         cleanWs(cleanWhenSuccess: true)
       }
     }
 
     stage('Check server') {
       steps {
-        sh 'curl -Is http://localhost:8081/api/1/cities | head -1'
+        sh 'curl http://localhost:8081/api/1/cities'
       }
     }
 
