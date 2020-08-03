@@ -4,7 +4,7 @@ pipeline {
     stage('Build and Deploy') {
       steps {
         echo 'Let\'s Start \\( ^ ^ )/'
-        sh 'docker-compose up --build &'
+        sh 'docker-compose up --build -d'
         cleanWs(cleanWhenSuccess: true)
       }
     }
