@@ -10,7 +10,7 @@ pipeline {
 
     stage('Check server') {
       steps {
-        sh 'docker-compose start pjx-api-node -d '
+        sh 'docker-compose up --no-build -d '
         sleep 10
         sh 'curl http://localhost:8081/api/1/cities'
       }
