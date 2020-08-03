@@ -20,6 +20,7 @@ pipeline {
       steps {
         sh 'docker-compose down'
         sh 'docker system prune --all --force'
+        cleanWs(cleanWhenSuccess: true)
       }
     }
 
