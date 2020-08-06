@@ -5,7 +5,7 @@ pipeline {
       steps {
         echo "${registry}"
         echo "${registryCredential}"
-        sh "docker build -t ${BRANCH_NAME}_pjx-api-node:latest ."
+        sh "docker build -t ${BRANCH_NAME}_${projectName}:latest ."
       }
     }
 
@@ -21,10 +21,10 @@ pipeline {
 
     stage('Docker Push') {
       steps {
-        sh "docker tag ${BRANCH_NAME}_pjx-api-node:latest candkyng/pjx:${BUILD_TAG}"
-        withCredentials(bindings: [usernamePassword(credentialsId: 'dockerhub',passwordVariable:'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+        sh "docker tag ${BRANCH_NAME}_${projectName}:latest ${registry}:${BUILD_TAG}"
+        withCredentials(bindings: [usernamePassword(credentialsId: '${registryCredential}',passwordVariable:'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
           sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-          sh "docker push candkyng/pjx:${BUILD_TAG}"
+          sh "docker push ${registry}:${BUILD_TAG}"
         }
 
       }
@@ -41,5 +41,6 @@ pipeline {
   environment {
     registry = 'candkyng/pjx'
     registryCredential = 'dockerhub'
+    projectName = 'pjx-api-node'
   }
 }
