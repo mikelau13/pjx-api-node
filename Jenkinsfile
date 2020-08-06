@@ -3,10 +3,9 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        script {
-          docker.build registry + ":$BUILD_NUMBER"
-        }
-
+        sh 'docker build -t pjx-api-node_first-test-pipeline_pjx-api-node:latest .'
+        echo '$JOB_NAME'
+        echo '$JOB_BASE_NAME'
       }
     }
 
