@@ -23,7 +23,7 @@ pipeline {
       steps {
         sh "docker tag ${BRANCH_NAME}_pjx-api-node:latest candkyng/pjx:${BUILD_TAG}"
         withCredentials(bindings: [usernamePassword(credentialsId: 'dockerhub',passwordVariable:'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-          sh "docker login -u ${env.dockerHubUser} -p $env.dockerHubPassword}"
+          sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
           sh "docker push candkyng/pjx:${BUILD_TAG}"
         }
 
