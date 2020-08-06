@@ -5,13 +5,13 @@ pipeline {
       steps {
         echo "${BRANCH_NAME}"
         echo "${JOB_NAME}"
-        sh "docker build -t pjx-api-node_${BRANCH_NAME}_pjx-api-node:latest ."
+        sh "docker build -t xxx_pjx-api-node:latest ."
       }
     }
 
     stage('Check server') {
       steps {
-        sh 'docker-compose up --no-build -d '
+        sh 'docker-compose up --no-build -d -p xxx'
         sleep 10
         sh 'curl http://localhost:8081/api/1/cities'
       }
