@@ -4,8 +4,8 @@ pipeline {
     stage('Build') {
       steps {
         sh 'docker build -t pjx-api-node_first-test-pipeline_pjx-api-node:latest .'
-        echo '${JOB_NAME}'
-        echo '${env.JOB_BASE_NAME}'
+        echo "${JOB_NAME}"
+        echo "${env.JOB_BASE_NAME}"
       }
     }
 
