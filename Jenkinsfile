@@ -22,7 +22,7 @@ pipeline {
     stage('Docker Push') {
       steps {
         sh "docker tag ${BRANCH_NAME}_${projectName}:latest ${registry}:${BUILD_TAG}"
-        withCredentials(bindings: [usernamePassword(credentialsId: '${registryCredential}',passwordVariable:'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+        withCredentials(bindings: [usernamePassword(credentialsId: "${registryCredential}",passwordVariable:'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
           sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
           sh "docker push ${registry}:${BUILD_TAG}"
         }
