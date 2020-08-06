@@ -3,8 +3,8 @@ pipeline {
   stages {
     stage('Docker Build') {
       steps {
-        echo '"${registry}"'
-        echo '${env.registryCredential}'
+        echo "${registry}"
+        echo "${registryCredential}"
         sh "docker build -t ${BRANCH_NAME}_pjx-api-node:latest ."
       }
     }
@@ -21,7 +21,7 @@ pipeline {
 
     stage('Docker Push') {
       steps {
-        sh '"docker tag ${BRANCH_NAME}_pjx-api-node:latest candkyng/pjx:${BUILD_TAG}"'
+        sh "docker tag ${BRANCH_NAME}_pjx-api-node:latest candkyng/pjx:${BUILD_TAG}"
         withCredentials(bindings: [usernamePassword(credentialsId: 'dockerhub',passwordVariable:'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
           sh "docker login -u ${env.dockerHubUser} -p $env.dockerHubPassword}"
           sh "docker push candkyng/pjx:${BUILD_TAG}"
