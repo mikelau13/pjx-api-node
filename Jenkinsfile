@@ -5,7 +5,7 @@ pipeline {
       steps {
         echo "${BRANCH_NAME}"
         echo "${JOB_NAME}"
-        sh "docker build -t pjx-api-node_${BRANCH_NAME}_pjx-api-node:${BUILD_NUMBER} ."
+        sh "docker build -t pjx-api-node_${BRANCH_NAME}_pjx-api-node:latest ."
       }
     }
 
