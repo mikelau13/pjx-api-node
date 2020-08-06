@@ -1,10 +1,12 @@
 pipeline {
   agent any
   stages {
-    stage('Build and Deploy') {
+    stage('Build') {
       steps {
-        echo 'Let\'s Start \\( ^ ^ )/'
-        sh 'docker-compose build'
+        script {
+          docker.build registry + ":$BUILD_NUMBER"
+        }
+
       }
     }
 
@@ -23,5 +25,9 @@ pipeline {
       }
     }
 
+  }
+  environment {
+    registry = 'candkyng/pjx'
+    registryCredential = 'dockerhub'
   }
 }
