@@ -1,6 +1,8 @@
 # pjx-api-node
 
-Api layer developed with [Restify](http://restify.com), this Api is part of my demo project, please visit [pjx project](https://github.com/mikelau13/pjx-root) for more details.
+This is an API layer developed with [Restify](http://restify.com),
+
+This project is one of the components of my demo `pjx` application, please check [pjx-root](https://github.com/mikelau13/pjx-root) for more details.
 
 
 ## Build & Launch
