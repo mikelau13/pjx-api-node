@@ -10,7 +10,7 @@ services:
     build:
       context: .
     container_name: pjx-api-node
-    command: npm start
+    # command: npm start
     volumes:
       - .:/usr/api
     ports:
